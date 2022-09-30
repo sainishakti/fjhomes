@@ -1,5 +1,5 @@
 const  jwt =require('jsonwebtoken')
- const UserModel = require('../models/model.js')
+ const UserModel = require('../models/userModel.js')
 
 module.exports.checkUserAuth = async (req, res, next) => {
   let token

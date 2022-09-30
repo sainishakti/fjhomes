@@ -1,7 +1,7 @@
 
 module.exports =app=>{
   const router = require("express").Router()
-  const controller = require("../controller/controller.js") 
+  const controller = require("../controller/userController.js") 
   const {checkUserAuth} = require("../middlewares/middlewares.js") 
 
 
