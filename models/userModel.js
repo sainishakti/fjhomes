@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // Defining Schema
 const userSchema = new mongoose.Schema({
-  //name: { type: String},
+  profile: { type: String},
   email: { type: String},
   phone: { type: String},
   password: { type: String },
@@ -15,6 +15,8 @@ const userSchema = new mongoose.Schema({
   liveIn: { type: String},
   speak: { type: String},
   deactivate: { type: Boolean,default:false},
+  hostMode: { type: Boolean,default:true},
+  guestMode: { type: Boolean,default:false},
  },
 {
   timestamps:true

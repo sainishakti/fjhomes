@@ -1,10 +1,17 @@
 const  UserModel =require("../models/propertiesModels.js")
+const  modeModel =require("../models/userModel.js")
 
 module.exports.properties = async (req, res) => {
     const{userid,image,title,price,discount,location,location_point,license_number,bed_count,
     guest_count,property_type,description,amenities,facilities,filter,status,check_in_date,check_out_date,location_name,location_address,
     location_lat,location_lng,is_deleted} = req.body;
 try{
+   const _id =req.body.userid
+   console.log(_id);
+  const user = await modeModel.findById({_id:_id })
+  const mode = user.hostMode
+  console.log(mode)
+if(mode==true){
         const data = new UserModel({
             userid:userid,
             image: image,
@@ -32,8 +39,12 @@ try{
         })
         await data.save()
         res.status(201).send({ "status":"200", "success":"True", "message": "Add Property Successfully"})
+      }else{
+        res.status(401).send({ "status": "401","success":"False", "message": "you Are Guest you Don't Create Properties" })
+      }
     }catch(error){
         res.status(401).send({ "status": "401","success":"False", "message": "Unable to Add" })
+        console.log(error);
     }
 
 }

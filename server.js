@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // Load Routes
 require("../src/router/userRouter.js")(app)
 require("../src/router/propertiesRouter.js")(app)
+require("../src/router/adminRouter.js")(app)
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
 })

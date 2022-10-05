@@ -182,7 +182,8 @@ console.log(otp);
       phone:phone,
       bio:bio,
       liveIn:liveIn,
-      speak:speak
+      speak:speak,
+      profile:req.file.filename
       })
     if(data){
     res.send({ "status": "201","success":"True", "message": "update Profile Successfully",data })
@@ -229,5 +230,32 @@ console.log(otp);
       console.log("error",error);
 }
   }
+
+  //updated GuestMode And Host Mode
    
-   
+  module.exports.updateMode= async (req, res) => {
+  try{
+    const  _id = req.body._id
+      const  guestMode = req.body.guestMode
+      if(guestMode==true){
+         hostMode = false
+      }
+     if(guestMode == false){
+       hostMode = true
+      }
+    const data = await UserModel.findByIdAndUpdate({ _id: _id },
+      {
+        hostMode: hostMode,
+        guestMode: guestMode
+      })
+      console.log("data",data);
+    if(data){
+    res.send({ "status": "201","success":"True", "message": "update Mode Successfully"})
+    }else{
+      res.status(401).send({"status": "401","success":"False", "message": "Unable To update" })
+    }
+    }catch(error){
+      res.status(401).send({"status": "401","success":"False", "message":  "Something went Wrong" })
+      console.log("error",error);
+}
+  }  
