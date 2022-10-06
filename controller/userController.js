@@ -13,6 +13,7 @@ module.exports.userRegister = async (req, res) => {
     }
 else if(users) {
       res.send({ "status": "failed", "message": "Phone already exists" })
+      console.log("hello");
     }
     else {
       if ( email && password && password_confirmation && phone ) {
