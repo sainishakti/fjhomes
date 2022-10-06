@@ -172,6 +172,7 @@ console.log(otp);
   //addPersonalInfo
   module.exports.updateProfile = async (req, res) => {
     const { displayName,realName, countryCode,phone,email,bio,liveIn,speak,_id} = req.body
+    console.log("heruku");
     try{
     const data = await UserModel.findByIdAndUpdate({ _id: _id },
       {
