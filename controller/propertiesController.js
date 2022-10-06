@@ -52,6 +52,7 @@ if(mode==true){
 module.exports.listProperty = async (req, res) => {
     try{
     const data = await UserModel.find()
+    console.log("data");
     if(data){
     res.send({ "status": "201","success":"True", "message": "get Property Successfully",data })
     }else{
